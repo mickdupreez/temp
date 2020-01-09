@@ -1,0 +1,267 @@
+#---# 1 2 3 4 5 6 7 8 9 10 #---#
+
+super + 1
+	exec bwp -r & i3-msg workspace 1
+super + shift + 1
+	i3-msg move container to workspace 1
+super + 2
+	exec bwp -r & i3-msg workspace 2
+super + shift + 2
+	i3-msg move container to workspace 2
+super + 3
+	exec bwp -r & i3-msg workspace 3
+super + shift + 3
+	i3-msg move container to workspace 3
+super + 4
+	exec bwp -r & i3-msg workspace 4
+super + shift + 4
+	i3-msg move container to workspace 4
+super + 5
+	exec bwp -r & i3-msg workspace 5
+super + shift + 5
+	i3-msg move container to workspace 5
+super + 6
+	exec bwp -r & i3-msg workspace 6
+super + shift + 6
+	i3-msg move container to workspace 6
+super + 7
+	exec bwp -r & i3-msg workspace 7
+super + shift + 7
+	i3-msg move container to workspace 7
+super + 8
+	exec bwp -r & i3-msg workspace 8
+super + shift + 8
+	i3-msg move container to workspace 8
+super + 9
+	exec bwp -r & i3-msg workspace 9
+super + shift + 9
+	i3-msg move container to workspace 9
+super + 0
+	exec bwp -r & i3-msg workspace 10
+super + shift + 0
+	i3-msg move container to workspace 10
+
+
+
+#---#  H J K L #---#
+
+super + {h,j,k,l}
+	i3-msg focus {left,down,up,right}
+super + shift + {h,j,k,l}
+	i3-msg move container {left,down,up,right} 30
+super + control + {h,j,k,l}
+	i3resize {left,down,up,right}
+
+#---# RETURN #---#
+
+super + Return
+	$TERMINAL
+super + shift + Return
+	exec samedir
+super + space
+	launcher
+#---# Q W E R T Y U I O P #---#
+
+super + q
+	i3-msg kill
+super + shift + q
+	killfocus
+super + w
+	$BROWSER
+super + shift + w
+	EMPTY
+super + e
+	$MAIL
+super + shift + e
+	EMPTY
+super + r
+	$TERMINAL -e $FILE
+super + shift + r
+	EMPTY
+super + t
+	$TERMINAL -e tmux
+super + shift + t
+	EMPTY
+super + y
+	EMPTY
+super + shift + y
+	EMPTY
+super + u
+	$SCRATCHPAD -e tmuxdd
+super + shift + u
+	updater
+super + i
+	sysmon
+super + shift + i
+	EMPTY
+super + o
+	killall screenkey || screenkey
+super + shift + o
+	EMPTY
+super + p
+	EMPTY
+super + shift + p
+	showclip
+
+
+
+#---# A S D F G #---#
+
+super + a
+	$TERMINAL -e pulsemixer; pkill -RTMIN+10 i3blocks
+super + shift + a
+	EMPTY
+super + s
+	i3-msg gaps inner current plus 5
+super + shift + s
+	i3-msg gaps inner current minus 5
+super + d
+	dmenu_run
+super + shift + d
+	mode "$freeze" ;; exec --no-startup-id notify-send "Distraction-free mode activated." "Press Super+Shift+f to return."
+super + f
+	i3-msg fullscreen toggle
+super + shift + f
+	EMPTY
+super + g
+	i3-msg workspace prev
+super + shift + g
+	EMPTY
+
+
+#---# Z X C V B N M #---#
+
+super + z
+	i3-msg gaps outer current plus 5
+super + shift + z
+	i3-msg gaps outer current minus 5
+super + x
+	mpc pause; pauseallmpv; i3lock -e -f -c 1d2021; xset dpms force off
+super + shift + x
+	prompt "Shutdown computer?" "sudo -A shutdown -h now"
+super + c
+	camtoggle
+super + shift + c
+	EMPTY
+super + v
+	EMPTY
+super + shift + v
+	EMPTY
+super + b
+	EMPTY
+super + shift + b
+	EMPTY
+super + n
+	EMPTY
+super + shift + n
+	EMPTY
+super + m
+	[con_id="__focused__" instance="^(?!dropdown_).*$"] exec --no-startup-id kill -9 `xdotool getwindowfocus getwindowpid`
+super + shift + m
+	EMPTY
+
+
+#---# F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 #---#
+
+
+super + F1
+	sh roficons
+# F2 is restart in i3 right now.
+super + F2
+	./.xprofile
+# Change display
+super + F3
+	displayselect
+# Hibernate
+super + F4
+	prompt 'Hibernate computer?' 'sudo systemctl suspend'
+# Restart/rescan wifi/eth networks
+super + F5
+	sudo -A systemctl restart NetworkManager
+# Start torrent daemon/open interface
+super + F6
+	torwrap
+# toggle torrent daemon
+super + F7
+	td-toggle
+# sync email
+super + F8
+	mailsync
+# Mount a USB drive or Android device
+super + F9
+	dmenumount
+# Unmount a USB drive or Android device
+super + F10
+	dmenuumount
+# Search with Duckduckgo
+super + F11
+	ducksearch
+# Network Manager interface
+super + F12
+	$TERMINAL -e sudo -A nmtui
+
+
+
+#---# XF86 #---#
+
+XF86Launch1
+	xset dpms force off
+XF86AudioMute
+	lmc mute
+XF86AudioLowerVolume
+	lmc down 5
+shift+XF86AudioLowerVolume
+	lmc down 10
+control+XF86AudioLowerVolume
+	lmc down 1
+XF86AudioRaiseVolume
+	lmc up 5
+shift+XF86AudioRaiseVolume
+	lmc up 10
+control+XF86AudioRaiseVolume
+	lmc up 1
+XF86AudioNext
+	lmc next
+XF86AudioPlay
+	lmc toggle
+XF86AudioPrev
+	lmc prev
+XF86AudioStop
+	lmc toggle
+XF86MonBrightnessDown
+	xbacklight -dec 10
+XF86MonBrightnessUp
+	xbacklight -inc 10
+
+
+
+
+#---# SPECIAL #---#
+
+
+super + shift + BackSpace
+	prompt "Reboot computer?" "sudo -A shutdown -r now"
+# Recording
+# Take screenshot
+Print
+	maim pic-full-$(date '+%y%m%d-%H%M-%S').png
+# Pick screenshot type
+shift + Print
+	maimpick
+# Record audio or video
+super +
+	dmenurecord
+# kill active recording
+super + Delete
+	dmenurecord kill
+
+# Pause audio
+super + {_,shift +} p
+	lmc {toggle,pause}
+# Changes to next/previous tracks
+super + {comma,period}
+	lmc {prev,next}
+# Restart track
+super + shift + less
+	lmc replay
+

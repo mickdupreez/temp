@@ -1,0 +1,9 @@
+#!/bin/bash
+
+
+#sudo timeshift --check | grep boot | sed 's/Last boot snapshot/Latest Backup/g'
+
+
+
+sudo ls -Art /run/media/TimeShift/timeshift/snapshots | tail -n 1 | awk ' {print "Backed up on " $0} ' | sed 's/2019-//g' | sed 's/-/:/2g' | sed 's/_/ At /g' | awk ' {print $0 } '
+

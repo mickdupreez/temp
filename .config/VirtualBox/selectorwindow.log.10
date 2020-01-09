@@ -1,0 +1,18 @@
+00:00:00.252509 VirtualBox GUI VM Selector Window 6.1.0 r135406 linux.amd64 (Dec 12 2019 21:11:25) release log
+00:00:00.252510 Log opened 2020-01-08T21:01:08.078851000Z
+00:00:00.252511 Build Type: release
+00:00:00.252512 OS Product: Linux
+00:00:00.252513 OS Release: 5.4.8-arch1-1
+00:00:00.252513 OS Version: #1 SMP PREEMPT Sat, 04 Jan 2020 23:46:18 +0000
+00:00:00.252525 DMI Product Name: XPS 15 9570
+00:00:00.252530 DMI Product Version: 
+00:00:00.252533 Firmware type: UEFI
+00:00:00.253547 Secure Boot: Disabled
+00:00:00.253569 Host RAM: 15758MB (15.3GB) total, 15224MB (14.8GB) available
+00:00:00.253571 Executable: /usr/lib/virtualbox/VirtualBox
+00:00:00.253571 Process ID: 516563
+00:00:00.253571 Package type: LINUX_64BITS_GENERIC (OSE)
+00:00:00.253589 Qt version: 5.14.0
+00:00:00.270742 GUI: UIMediumEnumerator: Medium-enumeration started...
+00:00:00.501242 GUI: UIDesktopWidgetWatchdog::sltHandleHostScreenAvailableGeometryCalculated: Screen 0 work area is actually resized to: -10x-10 x 3840x1022
+00:00:00.545089 GUI: UIMediumEnumerator: Medium-enumeration finished!

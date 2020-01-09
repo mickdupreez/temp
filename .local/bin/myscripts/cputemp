@@ -1,0 +1,4 @@
+#!/bin/bash
+
+
+sensors | awk '/Core/ {print $3 }' | awk '{ SUM += $1 } END {print SUM /6}' | awk '{printf "%.f\n", $1}' | awk ' {print $1} '

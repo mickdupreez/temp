@@ -1,0 +1,13 @@
+{
+    "name": "Default color scheme for shell prompts",
+    "groups": {
+        "mode":             { "fg": "level:1_fg",       "bg": "level:1_bg",     "attrs": ["bold"] }
+    },
+    "mode_translations": {
+        "vicmd": {
+            "groups": {
+                "mode":             { "fg": "level:1_bg_alt",       "bg": "level:1_fg_alt",     "attrs": ["bold"] }
+            }
+        }
+    }
+}

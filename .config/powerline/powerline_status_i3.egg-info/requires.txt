@@ -1,0 +1,18 @@
+i3ipc
+python-xlib
+
+[appoints segment support, Google Calendar]
+google-api-python-client
+
+[cpu load segment support]
+psutil
+
+[docs]
+Sphinx
+sphinx_rtd_theme
+
+[volume segment]
+pyalsaaudio
+
+[wifi segment support]
+iwlib

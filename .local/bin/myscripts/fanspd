@@ -1,0 +1,6 @@
+#!/bin/bash
+
+
+
+
+sensors | awk '/fan/ { print $2 }' | awk '{SUM +=$1} END { print SUM /2}' | awk ' { printf "%.f\n", $1} ' | awk '{print $1}'

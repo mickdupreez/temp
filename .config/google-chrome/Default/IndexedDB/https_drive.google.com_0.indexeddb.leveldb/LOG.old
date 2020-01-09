@@ -1,0 +1,16 @@
+2020/01/09-16:26:46.393 5e9bc Reusing MANIFEST /home/michael/.config/google-chrome/Default/IndexedDB/https_drive.google.com_0.indexeddb.leveldb/MANIFEST-000001
+2020/01/09-16:26:46.394 5e9bc Recovering log #43
+2020/01/09-16:26:46.394 5e9bc Reusing old log /home/michael/.config/google-chrome/Default/IndexedDB/https_drive.google.com_0.indexeddb.leveldb/000043.log 
+2020/01/09-16:26:52.762 5ef2c Compacting 2@0 + 1@1 files
+2020/01/09-16:26:52.778 5ef2c Generated table #46@0: 101 keys, 641023 bytes
+2020/01/09-16:26:52.778 5ef2c Compacted 2@0 + 1@1 files => 641023 bytes
+2020/01/09-16:26:52.780 5ef2c compacted to: files[ 0 1 1 0 0 0 0 ]
+2020/01/09-16:26:52.780 5ef2c Delete type=2 #44
+2020/01/09-16:26:52.780 5ef2c Delete type=2 #42
+2020/01/09-16:26:52.780 5ef2c Delete type=2 #40
+2020/01/09-16:26:53.002 5ef2c Level-0 table #48: started
+2020/01/09-16:26:53.013 5ef2c Level-0 table #48: 647596 bytes OK
+2020/01/09-16:26:53.015 5ef2c Delete type=0 #43
+2020/01/09-16:26:53.245 5ef2c Level-0 table #50: started
+2020/01/09-16:26:53.254 5ef2c Level-0 table #50: 667476 bytes OK
+2020/01/09-16:26:53.257 5ef2c Delete type=0 #47

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+listpid1=$(getpid "battery.py2")
+listpid2=$(getpid "autofan.py")
+listpid3=$(getpid "weather.py")
+
+[[ -n $listpid1 ]] ; kill $listpid1 &
+[[ -n $listpid2 ]] ; kill $listpid2 &
+[[ -n $listpid3 ]] ; kill $listpid3 &
+
+weather.py >/dev/null &
+autofan.py >/dev/null &
+battery.py2 >/dev/null &
+

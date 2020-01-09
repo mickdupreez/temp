@@ -1,0 +1,49 @@
+{
+   "app": {
+      "icon_color": "#FCCD48",
+      "launch": {
+         "web_url": "https://drive.google.com/?lfhs=2"
+      },
+      "linked_icons": [ {
+         "size": 32,
+         "url": "https://ssl.gstatic.com/apps-notify/drive_96_1x.png"
+      }, {
+         "size": 48,
+         "url": "https://ssl.gstatic.com/apps-notify/drive_96_1x.png"
+      }, {
+         "size": 64,
+         "url": "https://ssl.gstatic.com/apps-notify/drive_96_1x.png"
+      }, {
+         "size": 96,
+         "url": "https://ssl.gstatic.com/apps-notify/drive_96_1x.png"
+      }, {
+         "size": 128,
+         "url": "https://ssl.gstatic.com/apps-notify/drive_96_2x.png"
+      }, {
+         "size": 192,
+         "url": "https://ssl.gstatic.com/apps-notify/drive_96_2x.png"
+      }, {
+         "size": 256,
+         "url": "https://ssl.gstatic.com/apps-notify/drive_96_2x.png"
+      } ]
+   },
+   "description": "",
+   "icons": {
+      "128": "icons/128.png",
+      "192": "icons/192.png",
+      "256": "icons/256.png",
+      "32": "icons/32.png",
+      "48": "icons/48.png",
+      "64": "icons/64.png",
+      "96": "icons/96.png"
+   },
+   "key": "+tGJ3QfYfGsGrRLMZfqyLtHR4gW8EmdI/yDFjkEpbY0=",
+   "name": "Google Drive",
+   "url_handlers": {
+      "scope": {
+         "matches": [ "https://drive.google.com/*" ],
+         "title": "Google Drive"
+      }
+   },
+   "version": "2020.1.8.26577"
+}

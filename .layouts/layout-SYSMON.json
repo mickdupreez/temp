@@ -1,0 +1,87 @@
+[
+	{
+		"border": "normal",
+		"floating": "auto_off",
+		"fullscreen_mode": 0,
+		"layout": "splith",
+		"percent": null,
+		"type": "con",
+		"nodes": [
+			{
+				"border": "normal",
+				"floating": "auto_off",
+				"layout": "splitv",
+				"percent": 0.5,
+				"type": "con",
+				"nodes": [
+					{
+						"border": "pixel",
+						"current_border_width": 10,
+						"floating": "auto_off",
+						"geometry": {
+							"height": 600,
+							"width": 960,
+							"x": 0,
+							"y": 0
+						},
+						"name": "htop",
+						"percent": 0.24,
+						"swallows": [
+							{
+								"title": "^htop$"
+							}
+						],
+						"type": "con"
+					},
+					{
+						"border": "normal",
+						"floating": "auto_off",
+						"layout": "splith",
+						"percent": 0.76,
+						"type": "con",
+						"nodes": [
+							{
+								"border": "pixel",
+								"current_border_width": 10,
+								"floating": "auto_off",
+								"geometry": {
+									"height": 600,
+									"width": 960,
+									"x": 0,
+									"y": 0
+								},
+								"name": "gotop",
+								"percent": 0.5,
+								"swallows": [
+									{
+										"title": "^gotop$"
+									}
+								],
+								"type": "con"
+							},
+							{
+								"border": "pixel",
+								"current_border_width": 10,
+								"floating": "auto_off",
+								"geometry": {
+									"height": 600,
+									"width": 960,
+									"x": 0,
+									"y": 0
+								},
+								"name": "gtop",
+								"percent": 0.5,
+								"swallows": [
+									{
+										"title": "^gtop$"
+									}
+								],
+								"type": "con"
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+]

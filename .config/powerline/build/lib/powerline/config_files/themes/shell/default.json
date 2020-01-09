@@ -1,0 +1,77 @@
+{
+    "segments": {
+        "left": [
+            {
+                "function": "powerline.segments.shell.mode"
+            },
+            {
+                "function": "powerline.segments.common.env.user",
+                "priority": 30
+            },
+            {
+                "function": "powerline.segments.shell.cwd",
+                "priority": 10
+            },
+            {
+                "function": "powerline.segments.common.vcs.vcsinfo",
+                "name": "branch",
+                "args": {
+                    "name": "branch"
+                },
+                "priority": 40
+            },
+            {
+                "function": "powerline.segments.common.vcs.vcsinfo",
+                "args": {
+                    "name": "short"
+                },
+                "priority": 80
+            },
+            {
+                "function": "powerline.segments.common.vcs.vcsinfo",
+                "args": {
+                    "name": "summary"
+                },
+                "priority": 80
+            },
+            {
+                "function": "powerline.segments.common.vcs.vcsinfo",
+                "draw_inner_divider": true,
+                "draw_soft_divider": true,
+                "args": {
+                    "name": "ahead_behind",
+                    "status_colors": true,
+                    "ignore_statuses": ["U"]
+                },
+                "priority": 40
+            },
+            {
+                "function": "powerline.segments.common.vcs.vcsinfo",
+                "name": "stash",
+                "args": {
+                    "name": "stash",
+                    "status_colors": true,
+                    "ignore_statuses": ["U"]
+                },
+                "priority": 40
+            },
+            {
+                "function": "powerline.segments.common.vcs.vcsinfo",
+                "draw_inner_divider": true,
+                "draw_soft_divider": true,
+                "args": {
+                    "name": "status",
+                    "status_colors": true,
+                    "ignore_statuses": ["U"]
+                },
+                "priority": 40
+            },
+            {
+                "function": "powerline.segments.shell.last_pipe_status",
+                "priority": 10
+            }
+        ],
+        "right": [
+        ]
+    }
+}

@@ -1,0 +1,6 @@
+#!/bin/bash
+killall sxhkd unclutter
+xrdb -merge ~/.Xresources &
+i3-msg restart &
+
+

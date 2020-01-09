@@ -1,0 +1,10 @@
+unclutter: no process found
+i3-msg: Could not connect to i3 on socket /tmp/i3-ipc.sock: No such file or directory
+dunst: no process found
+picom: no process found
+/bin/sh: xautolock: command not found
+polybar: no process found
+WARNING: Failed to open file “/home/michael/.local/share/larbs/larbs.png”: No such file or directory
+kill: usage: kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... or kill -l [sigspec]
+Closing SHM log "/i3-log-705"
+polybar|warn:  Termination signal received, shutting down...

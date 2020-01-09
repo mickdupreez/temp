@@ -1,0 +1,59 @@
+#!/usr/bin/python
+
+from powerline.commands.gcalauth import get_argparser
+
+if __name__ == '__main__':
+    import sys, os
+    import httplib2
+
+    from apiclient.discovery import build
+    from oauth2client.tools import argparser
+    from oauth2client.file import Storage
+    from oauth2client.client import OAuth2WebServerFlow
+    from oauth2client.tools import run_flow
+
+    parser = get_argparser()
+    args = parser.parse_args()
+
+    print('Google Calendar Segment Authenticator')
+
+    path = os.path.expanduser('~') + '/.config/powerline/gcalendar_credentials'
+    if args.path:
+        path = args.path
+
+    if not os.path.exists(path):
+        with open(path, 'a'):
+            pass
+
+    client_id = None
+    client_secret = None
+
+    # If the Credentials don't exist or are invalid, run through the native client
+    # flow. The Storage object will ensure that if successful the good
+    # Credentials will get written back to a file.
+    storage = Storage(path)
+    credentials = storage.get()
+
+    if credentials is None or credentials.invalid == True:
+        if args.client_id:
+            client_id = args.client_id
+
+        if args.client_secret:
+            client_secret = args.client_secret
+
+        FLOW = OAuth2WebServerFlow(
+                client_id=client_id,
+                client_secret=client_secret,
+                scope='https://www.googleapis.com/auth/calendar',
+                user_agent='powerline-appoints-segment/1.0')
+        credentials = run_flow(FLOW, storage, argparser.parse_args([]))
+
+        if credentials is None or credentials.invalid == True:
+            print('Not successful :/')
+        else:
+            print('Successful')
+    else:
+        print('You have valid credentials:')
+        print('client-id: {0}\nclient-secret: {1}'.format(credentials.client_id, credentials.client_secret))
+
+

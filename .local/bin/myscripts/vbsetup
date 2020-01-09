@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Borrowed from two Sources Suzy Wu, ad WikiGain
+
+#
+# Create New Virtual machine called "Mojave" using as sda
+# macOS_Mojave_10.12_by_wikigain.vmdk
+# set up with 4GB RAM
+# 2 or more CPUs
+# 128MB video RAM
+VM=Mojave
+VDK=Mojave.vmdk
+
+
+#mkdir ~/"VirtualBox VMs"
+#mkdir ~/"VirtualBox VMs/$VM"
+echo Copying $VDK this takes some time....
+cp $VDK ~/"VirtualBox VMs/$VM/"
+
+
+#VBoxManage modifyvm Mojave  --cpuidset 00000001 000306a9 00020800 80000201 178bfbff
+#VBoxManage setextradata "Mojave" "VBoxInternal/Devices/efi/0/Config/DmiSystemProduct" "iMac11,3"
+#VBoxManage setextradata "Mojave" "VBoxInternal/Devices/efi/0/Config/DmiSystemVersion" "1.0"
+#VBoxManage setextradata "Mojave" "VBoxInternal/Devices/efi/0/Config/DmiBoardProduct" "Iloveapple"
+#VBoxManage setextradata "Mojave" "VBoxInternal/Devices/smc/0/Config/DeviceKey" "ourhardworkbythesewordsguardedpleasedontsteal(c)AppleComputerInc"
+#VBoxManage setextradata "Mojave" "VBoxInternal/Devices/smc/0/Config/GetKeyFromRealSMC" 1
+
+
+VBoxManage modifyvm $VM  --cpuidset 00000001 000306a9 00020800 80000201 178bfbff
+VBoxManage setextradata "$VM" "VBoxInternal/Devices/efi/0/Config/DmiSystemProduct" "iMac11,3"
+VBoxManage setextradata "$VM" "VBoxInternal/Devices/efi/0/Config/DmiSystemVersion" "1.0"
+VBoxManage setextradata "$VM" "VBoxInternal/Devices/efi/0/Config/DmiBoardProduct" "Iloveapple"
+VBoxManage setextradata "$VM" "VBoxInternal/Devices/smc/0/Config/DeviceKey" "ourhardworkbythesewordsguardedpleasedontsteal(c)AppleComputerInc"
+VBoxManage setextradata "$VM" "VBoxInternal/Devices/smc/0/Config/GetKeyFromRealSMC" 1
+VBoxManage setextradata "$VM" "VBoxInternal2/EfiGraphicsResolution" "1920x1080"
+

@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+
+
+reseti3 &
+sxhkd 2>/dev/null &
+setxkbmap -option caps:super -variant altgr-intl && killall xcape 2>/dev/null ; xcape -e 'Super_L=Escape' &
+xmodmap -e 'keycode 135 = Super_R' &
+xmodmap -e 'keycode 116 = Up' &
+xmodmap -e 'keycode 113 = Down' &
+xmodmap -e 'keycode 78 = Left' &
+xmodmap -e 'keycode 114 = Right' &
+xset r rate 300 50 &
+unclutter &
+compositor &
+notifications &
+sudo mounter &

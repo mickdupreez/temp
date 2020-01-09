@@ -1,0 +1,9 @@
+#!/bin/bash
+
+
+now=`cat /sys/class/power_supply/BAT0/status`
+current=`cat /sys/class/power_supply/BAT0/charge_now`
+full=`cat /sys/class/power_supply/BAT0/charge_full`
+out=`echo $current $full | awk '{ printf("%f\n", $1/$2 * 100) }'`
+echo "$now "${out%.*}"%"
+

@@ -1,0 +1,269 @@
+#!/usr/bin/env python
+import time
+import re
+import subprocess
+
+from threading import Lock, Timer, Thread
+
+from powerline.lemonbar import LemonbarPowerline, INTERNAL_BAR_COMMAND, SEGMENT_NAME
+from powerline.commands.lemonbar import get_argparser
+from powerline.bindings.wm import get_connected_randr_outputs
+
+bars = {}
+shell = None
+powerline = None
+lock = Lock()
+args = []
+global_args = []
+
+pause_clicks = False
+last_render = 0
+
+segment_info={'payloads': {}}
+
+needs_restart = []
+
+def execute(process, shell, callback):
+    for stdout_line in iter(process.stdout.readline, b''):
+        line = stdout_line[0:stdout_line.rfind(SEGMENT_NAME)]
+        segment_name = stdout_line[stdout_line.rfind(SEGMENT_NAME) + len(SEGMENT_NAME):-1]
+        if shell and not pause_clicks:
+            shell.stdin.write(line + b'\n')
+            shell.stdin.flush()
+        if callback:
+            callback(line.decode(), segment_name.decode())
+    process.stdout.close()
+
+def render(reschedule=False):
+    t = Timer(args.interval, render, kwargs={'reschedule': True})
+    stamp = time.time()
+    global lock
+    global last_render
+    if int(stamp * 3) == int(last_render * 3) and not reschedule:
+        return
+    last_render = stamp
+
+    try:
+        for output in bars:
+            process, thread, width = bars[output]
+            with lock:
+                process.stdin.write(powerline.render(mode=modes[0], width=width,
+                    matcher_info=output, segment_info=segment_info).encode('utf-8') + b'\n')
+                process.stdin.flush()
+                if reschedule and not t.is_alive():
+                    t.start()
+    except BrokenPipeError: # The lemonbar died, so should we
+        pass
+    except RuntimeError:
+        pass
+    global needs_restart
+    n_r = needs_restart
+    if len(n_r):
+        with lock:
+            n_r = needs_restart
+            needs_restart = []
+        for output in n_r:
+            restart_bar(output)
+        render(reschedule=True)
+
+def handle_bar_command(output_name, cmd, segment_name):
+    if cmd.find('#') > 0:
+        cmd = cmd[0:cmd.find('#')]
+
+    if segment_name == 'DROP':
+        return 0
+
+    global pause_clicks
+
+    if cmd == 'toggle_clicks':
+        pause_clicks = not pause_clicks
+        segment_info['payloads'].update({'#pause_clicks': pause_clicks})
+        return 1
+    elif pause_clicks:
+        return 0
+
+    # bar restarts
+    if cmd == 'restart':
+        restart_bar(output_name)
+        return 2
+    elif cmd.startswith('restart:'):
+        restart_bar(cmd[len(cmd.split(':')[0]) + 1:])
+        return 2
+    elif cmd == 'redraw':
+        return 1
+
+    # check for target channel names
+    if '@' in cmd:
+        spl = re.split(':|@', cmd)
+        segment_name = spl[1]
+        cmd = spl[0] + cmd[len(spl[0] + spl[1]) + 1:]
+
+    # communication with segments
+    if cmd == 'ch_clear':
+        # print('cleared comm chan {0}.'.format(segment_name))
+        if segment_name:
+            segment_info['payloads'].update({segment_name: None})
+        return 1
+    elif cmd == 'ch_fill':
+        if segment_name:
+            segment_info['payloads'].update({segment_name: True})
+        return 1
+    elif cmd == 'ch_toggle':
+        if segment_name:
+            if segment_name in segment_info['payloads'] and segment_info['payloads'][segment_name]:
+                segment_info['payloads'].update({segment_name: None})
+            else:
+                segment_info['payloads'].update({segment_name: True})
+        return 1
+    elif cmd.startswith('pass:'):
+        # print('passed {0} to comm chan {1}.'.format(cmd.split(':')[1], segment_name))
+        if segment_name:
+            segment_info['payloads'].update({segment_name: cmd[len(cmd.split(':')[0]) + 1:]})
+        return 1
+    elif cmd.startswith('pass_oneshot:'):
+        if segment_name:
+            import time
+            segment_info['payloads'].update({segment_name: (cmd[len(cmd.split(':')[0]) + 1:], time.time())})
+        return 1
+    elif cmd == 'update':
+        if segment_name:
+            powerline.force_update(mode=modes[0], segment_name=segment_name, matcher_info=output_name, segment_info=segment_info)
+            return 1
+    return 0
+
+
+def bar_callback(output_name, line, segment_name):
+    # powerline.pl.info('click on {0} (segment {2}): {1}'.format(output_name, line, segment_name))
+    # print('click on {0} (segment {2}): {1}'.format(output_name, line, segment_name))
+    action = 0
+    if INTERNAL_BAR_COMMAND.decode() in line:
+        line = line.split(INTERNAL_BAR_COMMAND.decode(), 1)[1]
+        for cmd in line.split(';'):
+            action = max(action, handle_bar_command(output_name, cmd, segment_name))
+
+    if action == 1:
+        render()
+    elif action == 2:
+        render(reschedule=True)
+
+
+def compute_bar_command(arg, screen, height):
+    if len(arg) > 1 and not args.use_defaults:
+        arg = args.args[1:]
+    else:
+        arg = [a for a in arg if a != '--']
+        res = []
+
+        if not '-a' in arg:
+            res += ['-a', '40']
+        if not '-b' in arg:
+            res += ['-b']
+
+        font_height = int(int(height) * .6)
+        sep_height = int(int(height) * .75)
+        mid = (font_height + sep_height) // 2
+
+        res += ['-f', 'DejaVu Sans Mono-' + str(font_height)]
+        res += ['-f', 'PowerlineSymbols-' + str(sep_height)]
+        res += ['-f', 'FontAwesome-' + str(mid)]
+
+        arg = res + [a.format(font_height, sep_height, mid) for a in arg]
+
+    if not args.alt_output:
+        return [args.bar_command, '-g', '{0}x{1}+{2}+{3}'.format(screen['width'], height, screen['x'], screen['y'])] + arg
+    else:
+        return [args.bar_command, '-O', screen['name'], '-g', 'x{0}'.format(height)] + arg
+
+
+def restart_bar(output_name):
+    if not powerline:
+        return
+
+    if output_name in bars:
+        p, t, w = bars.pop(output_name)
+        p.kill()
+
+    outputs = get_connected_randr_outputs(powerline.pl)
+    outputs = [o for o in outputs] # Needed as outputs is a generator
+
+    for screen in outputs:
+        if screen['name'] != output_name:
+            continue
+
+        if len([a for a in outputs if a['x'] == screen['x'] and a['y'] == screen['y']]) > 1:
+            if screen['primary'] == None:
+                continue
+
+        height = args.height
+        if args.relative_height:
+            height = int((min(int(screen['height']), int(screen['width']))) * float(args.height) / 100)
+
+        command = compute_bar_command(args.args, screen, height)
+        process = subprocess.Popen(command, stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+        if not args.no_clicks:
+            thr = Thread(target=execute, args=(process, shell, lambda x, y: bar_callback(screen['name'], x, y)))
+        else:
+            thr = Thread(target=execute, args=(process, shell, None))
+        if not thr.is_alive():
+            thr.start()
+
+        bars.update({output_name: (process, thr, int(int(screen['width']) / (int(height) * 0.555)))})
+        return
+
+def restart_callback(output):
+    global needs_restart
+    if not isinstance(output, str):
+        needs_restart += output
+    else:
+        needs_restart.extend([output])
+
+if __name__ == '__main__':
+    parser = get_argparser()
+    args = parser.parse_args()
+
+    powerline = LemonbarPowerline()
+    powerline.update_renderer()
+    if not args.no_clicks:
+        shell = subprocess.Popen(['/bin/sh'], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+
+    for screen in get_connected_randr_outputs(powerline.pl):
+        restart_bar(screen['name'])
+
+    modes = ['default']
+
+    segment_info['restart'] = restart_callback
+
+    def update(evt):
+        modes[0] = evt.change
+        render()
+
+    render(reschedule=True)
+
+    if not args.no_i3:
+        import i3ipc
+        newipc = False
+        try:
+            conn = i3ipc.Connection(auto_reconnect=True)
+            newipc = True
+        except TypeError:
+            conn = i3ipc.Connection()
+
+        while True:
+            conn.on('workspace', lambda conn, evt: render())
+            conn.on('window', lambda conn, evt: render())
+            conn.on('mode', lambda conn, evt: update(evt))
+            render()
+            conn.main()
+            if newipc: # Something really bad happened, let's just die
+                import sys
+                sys.exit(1)
+            time.sleep(1) # If this gets executed, i3 got restarted / crashed / whatever
+            try:
+                conn = i3ipc.Connection(auto_reconnect=True)
+            except TypeError:
+                conn = i3ipc.Connection()
+            powerline = LemonbarPowerline()
+            powerline.update_renderer()
+
+    while True:
+        time.sleep(1e8)

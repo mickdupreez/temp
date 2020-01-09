@@ -1,0 +1,48 @@
+00:00:00.001744 main     VirtualBox XPCOM Server 6.1.0 r135406 linux.amd64 (Dec 12 2019 21:11:25) release log
+00:00:00.001747 main     Log opened 2020-01-08T10:35:46.245759000Z
+00:00:00.001748 main     Build Type: release
+00:00:00.001750 main     OS Product: Linux
+00:00:00.001752 main     OS Release: 5.4.7-arch1-1
+00:00:00.001754 main     OS Version: #1 SMP PREEMPT Tue, 31 Dec 2019 17:20:16 +0000
+00:00:00.001781 main     DMI Product Name: XPS 15 9570
+00:00:00.001793 main     DMI Product Version: 
+00:00:00.001798 main     Firmware type: UEFI
+00:00:00.002890 main     Secure Boot: Disabled
+00:00:00.002936 main     Host RAM: 15758MB (15.3GB) total, 14168MB (13.8GB) available
+00:00:00.002940 main     Executable: /usr/lib/virtualbox/VBoxSVC
+00:00:00.002940 main     Process ID: 75426
+00:00:00.002941 main     Package type: LINUX_64BITS_GENERIC (OSE)
+00:00:00.005250 main     IPC socket path: /tmp/.vbox-michael-ipc/ipcd
+00:00:00.115819 nspr-2   VirtualBox: object creation starts
+00:00:00.115970 nspr-2   Home directory: '/home/michael/.config/VirtualBox'
+00:00:00.116463 nspr-2   Loading settings file "/home/michael/.config/VirtualBox/VirtualBox.xml" with version "1.12-linux"
+00:00:00.134253 nspr-2   NetIfAdpCtlOut: VBoxNetAdpCtl: Error while retrieving link speed for wlp59s0: VBoxNetAdpCtl: ioctl failed: Operation not supported
+00:00:00.135701 nspr-2   HostDnsMonitor: initializing
+00:00:00.136275 nspr-2   NAT: resolv.conf: nameserver 192.168.20.1
+00:00:00.136317 nspr-2   HostDnsMonitor: updating information
+00:00:00.136351 nspr-2   HostDnsMonitor: old information
+00:00:00.136359 nspr-2     no server entries
+00:00:00.136366 nspr-2     no domain set
+00:00:00.136373 nspr-2     no search string entries
+00:00:00.136379 nspr-2   HostDnsMonitor: new information
+00:00:00.136386 nspr-2     server 1: 192.168.20.1
+00:00:00.136394 nspr-2     domain: Home
+00:00:00.136400 nspr-2     search string 1: Home
+00:00:00.142619 nspr-2   Failed to open "/dev/vboxdrvu", errno=2, rc=VERR_VM_DRIVER_NOT_INSTALLED
+00:00:00.143895 nspr-2   VD: VDInit finished with VINF_SUCCESS
+00:00:00.163928 nspr-2   Loading settings file "/home/michael/VirtualBox VMs/Mojave/Mojave.vbox" with version "1.18-linux"
+00:00:00.166754 nspr-2   VirtualBox: object created
+00:00:00.197634 nspr-2   Saving settings file "/home/michael/VirtualBox VMs/Mojave/Mojave.vbox" with version "1.18-linux"
+00:00:00.347062 nspr-3   Saving settings file "/home/michael/VirtualBox VMs/Mojave/Mojave.vbox" with version "1.18-linux"
+00:00:00.458470 nspr-2   Saving settings file "/home/michael/VirtualBox VMs/Mojave/Mojave.vbox" with version "1.18-linux"
+00:00:00.592786 nspr-2   Saving settings file "/home/michael/VirtualBox VMs/Mojave/Mojave.vbox" with version "1.18-linux"
+00:00:00.679321 nspr-2   Saving settings file "/home/michael/VirtualBox VMs/Mojave/Mojave.vbox" with version "1.18-linux"
+00:00:00.796056 nspr-3   Saving settings file "/home/michael/VirtualBox VMs/Mojave/Mojave.vbox" with version "1.18-linux"
+00:00:00.909123 nspr-3   Saving settings file "/home/michael/VirtualBox VMs/Mojave/Mojave.vbox" with version "1.18-linux"
+00:00:05.917670 main     VirtualBox: object deletion starts
+00:00:05.917738 main     ERROR [COM]: aRC=VBOX_E_OBJECT_IN_USE (0x80bb000c) aIID={ad47ad09-787b-44ab-b343-a082a3f2dfb1} aComponent={MediumWrap} aText={Medium '/home/michael/Downloads/Copy of Mojave 10.14.3 HFS by Techsviewer.com/Copy of Mojave 10.14.3 HFS by Techsviewer.com/Mojave 10.14.3 HFS by Techsviewer.com/Mojave 10.14.3 HFS by Techsviewer.vmdk' cannot be closed because it is still attached to 1 virtual machines}, preserve=false aResultDetail=0
+00:00:05.919539 main     HostDnsMonitor: shutting down ...
+00:00:05.927767 main     HostDnsMonitor: shut down
+00:00:06.417138 Watcher  ERROR [COM]: aRC=E_ACCESSDENIED (0x80070005) aIID={d0a0163f-e254-4e5b-a1f2-011cf991c38d} aComponent={VirtualBoxWrap} aText={The object is not ready}, preserve=false aResultDetail=0
+00:00:10.927951 main     {00007fd404017380} HostPowerServiceLinux::~HostPowerServiceLinux: RTThreadWait() for 5000 ms failed with VERR_TIMEOUT
+00:00:10.928539 main     VirtualBox: object deleted

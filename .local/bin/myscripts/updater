@@ -1,0 +1,6 @@
+#!/bin/bash
+
+
+update="$TERMINAL -e sudo pacman -Syyuuv --noconfirm --sysupgrade"
+
+$update && exit

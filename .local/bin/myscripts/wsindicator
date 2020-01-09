@@ -1,0 +1,21 @@
+#!/bin/bash
+
+
+names[1]=" One"
+names[2]=" Two"
+names[3]=" Three"
+names[4]=" Four"
+names[5]=" Five"
+names[6]=" Six"
+names[7]=" Seven"
+names[8]=" Eight"
+names[9]=" Nine"
+names[10]=" Ten"
+
+awkop=($(i3-msg -t get_workspaces | awk -F: -v RS=',' '
+  $1~"num"{cnm=$2;nws++}
+  $1~"focused" && $2=="true" {printf cnm " "}
+  END{print nws}
+'))
+
+echo "${names[${awkop[0]}]:-${awkop[0]}} ${awkop[1]}" &

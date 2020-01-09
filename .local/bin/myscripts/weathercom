@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cliweather="python cliweather -u Celsius -a 6c5092346ceeafd825faab6c31a80025b9e88ae41b0f07d68e98788b506bbc5c -p WeatherComParser -td"
+
+$cliweather | sed -n 2p | sed 's/^ */ /g'
+
+

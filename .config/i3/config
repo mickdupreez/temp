@@ -1,0 +1,108 @@
+# vim: filetype=i3
+# This config file will use environmental variables such as $BROWSER and $TERMINAL.
+# You can set these variables in ~/.profile or ~/.bash_profile if you have it as below:
+#
+
+# #---Basic Definitions---# #
+for_window [class="^.*"] border pixel 7
+gaps inner 10
+gaps outer 0
+smart_gaps on
+set $term --no-startup-id $TERMINAL
+set $mod Mod4
+
+
+# rounded corners
+border_radius 10
+hide_edge_borders smart
+
+# #---Window colors---#
+set $green		#68f734
+set $red		#CC0000
+set $pink		#f21672
+set $blue		#00b7ff
+set $black		#000000
+bindsym $mod+q		kill
+# CLASS			BORDER	 	BACKGROUND	TEXT		INDICATOR	CHILDBORDER
+client.focused		$pink		$pink		$pink 		$pink 		$pink
+client.unfocused	$black 		$black		$black 		$black 		$black
+
+# #---Dropdown Windows---# #
+# General dropdown window traits. The order can matter.
+for_window [class="Termite*"] floating enable
+for_window [class="Termite*"] move scratchpad
+for_window [class="Termite*"] sticky enable
+for_window [class="Termite*"] scratchpad show
+for_window [class="Termite*"] resize set 625 450
+for_window [class="Termite*"] border pixel 3
+for_window [class="Termite*"] move position center
+
+# #---Bars---# #
+# #---Basic Bindings---# #
+
+
+
+#bindsym $mod+Return 	 	exec $term
+#bindsym $mod+Shift+Return	exec --no-startup-id samedir focus
+
+# #---Workspace Bindings---# #
+
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+set $ws6 6
+set $ws7 7
+set $ws8 8
+set $ws9 9
+set $ws10 10
+
+
+## switch to workspace
+#bindsym $mod+1		exec bwp -r ;; workspace $ws1
+#bindsym $mod+2		exec bwp -r ;; workspace $ws2
+#bindsym $mod+3		exec bwp -r ;; workspace $ws3
+#bindsym $mod+4		exec bwp -r ;; workspace $ws4
+#bindsym $mod+5		exec bwp -r ;; workspace $ws5
+#bindsym $mod+6		exec bwp -r ;; workspace $ws6
+#bindsym $mod+7		exec bwp -r ;; workspace $ws7
+#bindsym $mod+8		exec bwp -r ;; workspace $ws8
+#bindsym $mod+9		exec bwp -r ;; workspace $ws9
+#bindsym $mod+0		exec bwp -r ;; workspace $ws10
+
+# move focused container to workspace
+#bindsym $mod+Shift+1	move container to workspace $ws1
+#bindsym $mod+Shift+2	move container to workspace $ws2
+#bindsym $mod+Shift+3	move container to workspace $ws3
+#bindsym $mod+Shift+4	move container to workspace $ws4
+#bindsym $mod+Shift+5	move container to workspace $ws5
+#bindsym $mod+Shift+6	move container to workspace $ws6
+#bindsym $mod+Shift+7	move container to workspace $ws7
+#bindsym $mod+Shift+8	move container to workspace $ws8
+#bindsym $mod+Shift+9	move container to workspace $ws9
+#bindsym $mod+Shift+0	move container to workspace $ws10
+
+
+# assign programs to workspaces
+
+# #---Arrow Keys---# #
+bindsym $mod+Left		focus left
+bindsym $mod+Ctrl+Left		move workspace to output left
+bindsym $mod+Down		focus down
+bindsym $mod+Ctrl+Down		move workspace to output down
+bindsym $mod+Up			focus up
+bindsym $mod+Ctrl+Up		move workspace to output up
+bindsym $mod+Right 		focus right
+bindsym $mod+Ctrl+Right		move workspace to output right
+bindsym $mod+Shift+Left		move left
+bindsym $mod+Shift+Down		move down
+bindsym $mod+Shift+Up		move up
+bindsym $mod+Shift+Right 	move right
+
+
+# lock screen after 10 minutes of idle
+exec_always --no-startup-id xautolock -time 10 -locker 'i3lock -k --indicator -i .config/wallpapers/blurs/mountain.jpg'
+exec_always killall polybar
+exec_always polybarstart
+exec_always --no-startup-id notify-send -i ~/.local/share/larbs/larbs.png 'Welcome to LARBS:' 'Press Super+F1 for the manual.' -t 10000

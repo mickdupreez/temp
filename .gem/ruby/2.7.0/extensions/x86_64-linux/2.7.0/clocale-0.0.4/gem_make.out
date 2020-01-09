@@ -1,0 +1,19 @@
+current directory: /home/michael/.gem/ruby/2.7.0/gems/clocale-0.0.4/ext/clocale
+/usr/bin/ruby -I /usr/lib/ruby/2.7.0 -r ./siteconf20200108-29049-fflavw.rb extconf.rb
+checking for locale.h... yes
+checking for setlocale()... yes
+checking for strcoll()... yes
+checking for strxfrm()... yes
+creating Makefile
+
+current directory: /home/michael/.gem/ruby/2.7.0/gems/clocale-0.0.4/ext/clocale
+make "DESTDIR=" clean
+
+current directory: /home/michael/.gem/ruby/2.7.0/gems/clocale-0.0.4/ext/clocale
+make "DESTDIR="
+compiling clocale.c
+linking shared-object clocale/clocale.so
+
+current directory: /home/michael/.gem/ruby/2.7.0/gems/clocale-0.0.4/ext/clocale
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 clocale.so ./.gem.20200108-29049-m1lwss/clocale

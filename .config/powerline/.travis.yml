@@ -1,0 +1,29 @@
+sudo: false
+dist: trusty
+cache:
+    directories:
+        - $HOME/.cache/pip
+        - tests/bot-ci
+addons:
+    apt:
+        packages:
+            - libssl1.0.0
+            - zsh
+            - tcsh
+            - mksh
+            - busybox
+            # - rc
+            - socat
+            - bc
+            - libiw-dev
+            - libasound2-dev
+language: python
+script:   echo "tests disabled" #tests/test.sh
+jobs:
+    include:
+        - python: "pypy3"
+        - python: "3.4"
+        - python: "3.5"
+        - python: "3.6"
+
+# vim: et

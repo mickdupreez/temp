@@ -1,0 +1,94 @@
+#!/usr/bin/env python3
+import subprocess
+import time
+
+# ---# Path Variables #---#
+
+FULL = '/sys/class/power_supply/BAT0/charge_full'
+CURRENT = '/sys/class/power_supply/BAT0/charge_now'
+NOW = '/sys/class/power_supply/BAT0/status'
+CMD = 'cat'
+
+# ---# Subprocesses and Variables for output #---#
+
+# Status [Discharging Charging Full]
+GET_STATUS = subprocess.run([CMD, NOW], capture_output=True, text=True)
+# Charge in Mah
+GET_CHARGE = subprocess.run([CMD, CURRENT], capture_output=True, text=True)
+# MAX charge in Mah
+GET_MAX = subprocess.run([CMD, FULL], capture_output=True, text=True)
+# Divided by FULL Multiplied by 100 To get value of 0-100
+EQUATION = int(GET_CHARGE.stdout) / int(GET_MAX.stdout) * 100
+CHARGE = int(EQUATION)
+STATUS = GET_STATUS.stdout.rstrip()
+PERCENT = '%'
+# Formatting the output to one line with trailing percent sign
+BATT = STATUS, CHARGE, PERCENT
+BATTERY = f"{CHARGE}{PERCENT}"
+
+# ---# Colors and Icons #---#
+
+END = '%{F-}'
+Pink = '%{F#FF0099}'
+Green = '%{F#33FF00}'
+Red = '%{F#ff0000}'
+Blue = '%{F#127FE0}'
+Purple = '%{F#8D008D}'
+Blue2 = '%{F#a1efe4}'
+White = '%{F#ffffff}'
+Orange = '%{F#fd971f}'
+Brown = '%{F#78300C}'
+Grey = '%{F#32322D}'
+Black = '%{F#000000}'
+Cream = '%{F#a59f85}'
+Yellow = '%{F#ffff00}'
+Light_Pink = '%{F#F21672}'
+Light_Green = '%{F#a6e22e}'
+Light_Orange = '%{F#f4bf75}'
+Light_Blue = '%{F#66d9ef}'
+Light_Purple = '%{F#ae81ff}'
+Light_Blue2 = '%{F#a1efe4}'
+Light_White = '%{F#f8f8f2}'
+Light_Grey = '%{F#75715e}'
+Dark_Grey = '%{F#c9272822}'
+Darker_Grey = '%{F#191919}'
+Transparent = '%{F#00000000}'
+
+F = ''
+T = ''
+H = ''
+R = ''
+E = ''
+
+DISCHARGING = [F, T, H, R, E]
+CHARGING = [E, R, H, T, F]
+CHARGED = [F]
+output = 'polify' '--module' 'battery' \
+    if STATUS == 'Discharging':
+        c = Light_Orange
+        e = END
+        b = BATTERY
+        for x in DISCHARGING:
+            subprocess.run(['polify', '--module', 'battery', c, x, e, b], capture_output=True)
+            time.sleep(0.5)
+    if STATUS == 'Charging':
+        c = Light_Green
+        e = END
+        b = BATTERY
+        for x in CHARGING:
+            subprocess.run(['polify', '--module', 'battery', c, x, e, b], capture_output=True)
+            out = 'echo msg'
+            time.sleep(0.5)
+    if STATUS == 'Full':
+        c = Green
+        e = END
+        x = F
+        subprocess.run(['polify', '--module', 'battery', c, x, e], capture_output=True)
+        time.sleep(15)
+
+
+deloutput = "sed -i '1d' BATTERY.txt"
+
+
+B = 1
+while B == 1:

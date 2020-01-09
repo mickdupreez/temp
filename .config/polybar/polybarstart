@@ -1,0 +1,14 @@
+#!/bin/bash
+
+listpid1=$(getpid "i3listen.py")
+
+
+
+
+[[ -n $listpid ]] ; kill $listpid1 &
+
+
+
+i3listen.py >/dev/null &
+polybar bottom -r >/dev/null &
+

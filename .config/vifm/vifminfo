@@ -1,0 +1,319 @@
+# You can edit this file by hand, but it's recommended not to do that.
+
+# Marks:
+'l
+	/home/michael
+	.dotfiles
+1577594550
+
+# Bookmarks:
+
+# TUI:
+al
+q1
+v2
+ov
+m-1
+l2
+r2
+
+# Left window history (oldest to newest):
+d/home/michael/.vim
+	autoload
+1
+d/home/michael/.vim/autoload
+	plug.vim
+1
+d/home/michael/.vim
+	plugged
+2
+d/home/michael/.vim/plugged
+	deoplete.nvim
+2
+d/home/michael/.vim/plugged/deoplete.nvim
+	autoload
+3
+d/home/michael/.vim/plugged/deoplete.nvim/autoload
+	..
+0
+d/home/michael/.vim/plugged/deoplete.nvim
+	plugin
+5
+d/home/michael/.vim/plugged/deoplete.nvim/plugin
+	..
+0
+d/home/michael/.vim/plugged/deoplete.nvim
+	rplugin
+6
+d/home/michael/.vim/plugged/deoplete.nvim/rplugin
+	python3
+1
+d/home/michael/.vim/plugged/deoplete.nvim/rplugin/python3
+	deoplete
+1
+d/home/michael/.vim/plugged/deoplete.nvim/rplugin/python3/deoplete
+	__init__.py
+4
+d/home/michael/.vim/plugged/deoplete.nvim/rplugin/python3
+	deoplete
+1
+d/home/michael/.vim/plugged/deoplete.nvim/rplugin
+	python3
+1
+d/home/michael/.vim/plugged/deoplete.nvim
+	rplugin
+6
+d/home/michael/.vim/plugged
+	deoplete.nvim
+2
+d/home/michael/.vim
+	plugged
+2
+d/home/michael/.vim/plugged
+	deoplete-jedi
+1
+d/home/michael/.vim/plugged/deoplete-jedi
+	Makefile
+12
+d/home/michael/.vim/plugged
+	deoplete-jedi
+1
+d/home/michael/.vim
+	plugged
+2
+d/home/michael
+	.vim
+16
+d/home
+	michael
+1
+d/home/michael
+	.vim
+16
+d/home/michael/.vim
+	plugged
+2
+d/home/michael/.vim/plugged
+	..
+0
+d/home/michael/.vim
+	autoload
+1
+d/home/michael/.vim/autoload
+	plug.vim
+1
+d/home/michael
+	Downloads
+19
+d/home/michael/Downloads
+	Copy of Mojave 10.14.3 HFS by Techsviewer.com.rar
+2
+d/home/michael
+	Downloads
+20
+d/home/michael/Downloads
+	Copy of Mojave 10.14.3 HFS by Techsviewer.com.rar
+2
+d/home/michael
+	.profile
+30
+
+# Right window history (oldest to newest):
+D/sys/class/power_supply/BAT0
+	
+0
+D/home/michael/.local/bin/tools
+	..
+0
+D/home/michael
+	
+0
+D/home/michael/Downloads/installer-master/installer-master
+	installer-master
+4
+D/home/michael/Downloads/installer-master/installer-master/installer-master
+	installer-master
+1
+D/home/michael/Downloads/installer-master/installer-master/installer-master/installer-master
+	iso-generator.sh
+13
+D/home/michael/Downloads/installer-master/installer-master/installer-master
+	installer-master
+1
+D/home/michael/Downloads/installer-master/installer-master
+	lang
+4
+D/home/michael
+	Downloads
+1
+D/home/michael/Downloads
+	installer-master
+1
+D/home/michael/Downloads/installer-master
+	installer-master
+1
+D/home/michael/Downloads/installer-master/installer-master
+	lang
+4
+D/home/michael
+	.local
+10
+D/home/michael/.local
+	share
+2
+D/home/michael
+	.config
+2
+D/home/michael/.config
+	sxhkd
+42
+D/home/michael/.config/sxhkd
+	sxhkdrc
+2
+D/home/michael
+	..
+0
+D/home
+	michael
+1
+D/home/michael
+	.config
+2
+D/home/michael/.config
+	sxhkd
+31
+D/home/michael
+	.local
+10
+D/home/michael/.local
+	share
+2
+D/home/michael/.local/share
+	..
+0
+D/home/michael/.local
+	bin
+1
+D/home/michael/.local/bin
+	mounter
+20
+D/home/michael
+	..
+0
+D/usr/bin
+	
+0
+D/home/michael
+	
+0
+
+# Command line history (oldest to newest):
+:change
+:rlink
+:copy
+:rlink .Xauthority .Xclients .Xdefaults .Xresources .bash_logout .bash_profile .bashrc .dir_colors .gitconfig
+:vifm
+:mkdir test
+:mkdir.screenlayout
+:! ./readline.py
+:qq
+:!st
+:split
+:za
+:set dotfiles
+:set dotfiles dirsize
+:set dirsize
+:setglobal dotfiles
+:setglobal dotdirs
+:setlocal dotfiles
+:!touch 
+:touch displaytitle
+:!vim
+:mkdir python_projects
+:alink .local/bin/python_projects/battery.py .local/bin/myscripts/
+:alink .local/bin/myscripts/
+:chmod
+:w
+:!unzip
+:!unzip LARBS-master.zip
+:view
+:wq
+:empty
+:!unzip Copy\ of\ Mojave\ 10.14.3\ HFS\ by\ Techsviewer.com.rar
+:q
+
+# Search history (oldest to newest):
+
+# Prompt history (oldest to newest):
+pwsindicator
+p.ohmyzsh
+pEMPTY
+psxhkdrc
+pwsindicator2
+poh-my-zsh
+pconfig-backup
+pconfig
+pbackupd
+p#.zshrc
+p.zshrcbackup
+p.zshrc
+pmichael
+ppowerline2
+pXauthority
+pwi-fi.info
+pViFM
+pi3
+p.Xclients1
+p.gtkrc-2.0
+p.gtkrc-2.0.mine
+pcpu-temp.sh
+pbattery.py
+pbattery.py2
+pThermalcontroller.py
+pmudulerefresh
+prefresh_polybar
+pzshrc
+pMojave 10.14.3 HFS by Techsviewer.vmdk
+pMo.vmdk
+pMojave.vmdk
+
+# Local filter history (oldest to newest):
+
+# Registers:
+""/home/michael/Trash//000_ra1nstorm.run
+
+# Directory stack (oldest to newest):
+
+# Trash content:
+t/home/michael/Trash//000_Mojave
+	/home/michael/VirtualBox VMs/Mojave
+t/home/michael/Trash//000_deoplete-jedi
+	/home/michael/.vim/plugged/deoplete-jedi
+t/home/michael/Trash//000_deoplete.nvim
+	/home/michael/.vim/plugged/deoplete.nvim
+t/home/michael/Trash//000_goyo.vim
+	/home/michael/.vim/plugged/goyo.vim
+t/home/michael/Trash//000_i3-vim-syntax
+	/home/michael/.vim/plugged/i3-vim-syntax
+t/home/michael/Trash//000_nerdtree
+	/home/michael/.vim/plugged/nerdtree
+t/home/michael/Trash//000_sxhkd-vim
+	/home/michael/.vim/plugged/sxhkd-vim
+t/home/michael/Trash//000_vifm.vim
+	/home/michael/.vim/plugged/vifm.vim
+t/home/michael/Trash//000_vim-airline
+	/home/michael/.vim/plugged/vim-airline
+t/home/michael/Trash//000_vim-airline-themes
+	/home/michael/.vim/plugged/vim-airline-themes
+t/home/michael/Trash//000_vim-commentary
+	/home/michael/.vim/plugged/vim-commentary
+t/home/michael/Trash//000_vim-surround
+	/home/michael/.vim/plugged/vim-surround
+t/home/michael/Trash//000_vimagit
+	/home/michael/.vim/plugged/vimagit
+t/home/michael/Trash//000_vimling
+	/home/michael/.vim/plugged/vimling
+t/home/michael/Trash//000_vimwiki
+	/home/michael/.vim/plugged/vimwiki
+t/home/michael/Trash//000_ra1nstorm.run
+	/home/michael/Downloads/ra1nstorm.run

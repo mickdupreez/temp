@@ -1,0 +1,268 @@
+{
+    "name":                     "Default",
+    "groups": {
+        "clip": {
+            "fg":               "level:2_fg",
+            "bg":               "level:2_bg",
+            "click": {
+                "left":         "xsel -cb"
+            }
+        },
+        "volume_gradient": {
+            "fg":               "white_red",
+            "bg":               "level:3_bg",
+            "click": {
+                "scroll up":    "pactl set-sink-volume @DEFAULT_SINK@ +1%",
+                "scroll down":  "pactl set-sink-volume @DEFAULT_SINK@ -1%"
+            }
+        },
+        "player": {
+            "fg":               "level:3_fg",
+            "bg":               "level:3_bg",
+            "click": {
+                "left":         "xdotool key XF86AudioPlay",
+                "middle":       "#bar;ch_toggle"
+            }
+        },
+        "player:next": {
+            "fg":               "level:3_fg",
+            "bg":               "level:3_bg",
+            "click": {
+                "left":         "xdotool key XF86AudioNext"
+            }
+        },
+        "player:previous": {
+            "fg":               "level:3_fg",
+            "bg":               "level:3_bg",
+            "click": {
+                "left":         "xdotool key XF86AudioPrev"
+            }
+        },
+        "workspace": {
+            "fg":               "level:3_fg",
+            "bg":               "level:3_bg",
+            "click": {
+                "left":         "i3-msg workspace {workspace_name}",
+                "right":        "i3-msg move to workspace {workspace_name}"
+            }
+        },
+        "workspace:focused": {
+            "fg":               "level:3_bg",
+            "bg":               "level:3_fg"
+        },
+        "workspace:visible": {
+            "fg":               "level:3_bg",
+            "bg":               "level:3_fg"
+        },
+        "workspace:urgent": {
+            "bg":               "level:2_bg",
+            "fg":               "0xffaf00",
+            "click": {
+                "left":         "i3-msg workspace {workspace_name}",
+                "right":        "i3-msg move to workspace {workspace_name}"
+            }
+        },
+        "scratchpad": {
+            "fg":               "level:3_fg",
+            "bg":               "level:3_bg",
+            "click": {
+                "left":         "i3-msg scratchpad show",
+                "right":        "i3-msg move to scratchpad"
+            }
+        },
+        "scratchpad:focused": {
+            "fg":               "level:3_bg",
+            "bg":               "level:3_fg",
+            "click": {
+                "left":         "i3-msg scratchpad show",
+                "right":        "i3-msg move to scratchpad"
+            }
+        },
+        "scratchpad:visible":   "scratchpad:focused",
+        "scratchpad:urgent": {
+            "bg":               "level:3_bg",
+            "fg":               "brightorange",
+            "click": {
+                "left":         "i3-msg scratchpad show",
+                "right":        "i3-msg move to scratchpad"
+            }
+        },
+        "output": {
+            "bg":               "level:2_bg",
+            "fg":               "level:2_fg"
+        },
+        "output:status": {
+            "bg":               "level:2_bg",
+            "fg":               "level:2_fg",
+            "click": {
+                "left":         "#bar;pass_oneshot:output:{output_name}:toggle",
+                "middle":       "#bar;pass_oneshot:ch_toggle"
+            }
+        },
+        "output:mirror_state": {
+            "bg":               "level:2_bg",
+            "fg":               "level:2_fg",
+            "click": {
+                "left":         "#bar;pass_oneshot:mode:toggle",
+                "middle":       "#bar;pass_oneshot:ch_toggle"
+            }
+        },
+        "output:short":         "output:mirror_state",
+        "srot":                 "level:2",
+        "srot:mode": {
+            "bg":               "level:2_bg",
+            "fg":               "level:2_fg",
+            "click": {
+                "left":         "#bar;pass_oneshot:toggle_rot",
+                "middle":       "#bar;pass_oneshot:toggle_controls:{output}"
+            }
+        },
+        "srot:tc": {
+            "bg":               "level:2_bg",
+            "fg":               "level:2_fg",
+            "click": {
+                "left":         "#bar;pass_oneshot:capture_input:{output}",
+                "middle":       "#bar;pass_oneshot:toggle_controls:{output}"
+            }
+        },
+        "srot:rc": {
+            "bg":               "level:2_bg",
+            "fg":               "level:2_fg",
+            "click": {
+                "left":         "#bar;pass_oneshot:capture:{output}",
+                "middle":       "#bar;pass_oneshot:toggle_controls:{output}"
+            }
+        },
+        "appoint": {
+            "bg":               "level:3_bg",
+            "fg":               "level:3_fg",
+            "click": {
+                "left":         "#bar;ch_toggle"
+            }
+        },
+        "appoint:urgent": {
+            "bg":               "level:2_bg",
+            "fg":               "level:2_fg",
+            "click": {
+                "left":         "#bar;ch_toggle"
+            }
+        },
+        "appoint:error": {
+            "fg":               "level:3_fg",
+            "bg":               "red",
+            "click": {
+                "right":        "powerline-gcal-auth '<insert client_id here>' '<insert client_secrect here>'",
+                "left":         "#bar;ch_toggle"
+            }
+        },
+        "mode":                 "level:2",
+        "active_window_title":  "level:2",
+        "hostname": {
+            "fg":               "level:1_fg",
+            "bg":               "level:1_bg",
+            "click": {
+                "left":         "#bar;restart"
+            }
+        },
+        "wireless:quality": {
+            "fg":               "level:3_fg",
+            "bg":               "level:3_bg",
+            "click": {
+                "left":         "#bar;ch_toggle"
+            }
+        },
+        "launcher": {
+            "bg":               "level:1_bg",
+            "fg":               "level:1_fg",
+            "click": {
+                "left":         "#bar;ch_toggle",
+                "middle":       "#bar;ch_toggle"
+            }
+        },
+        "launcher:terminal": {
+            "bg":               "level:1_bg",
+            "fg":               "level:1_fg",
+            "click": {
+                "left":         "i3-sensible-terminal",
+                "middle":       "#bar;ch_toggle"
+            }
+        },
+        "launcher:files": {
+            "bg":               "level:1_bg",
+            "fg":               "level:1_fg",
+            "click": {
+                "left":         "xdg-open './'",
+                "middle":       "#bar;ch_toggle"
+            }
+        },
+        "launcher:browser": {
+            "bg":               "level:1_bg",
+            "fg":               "level:1_fg",
+            "click": {
+                "left":         "xdg-open 'https://'",
+                "middle":       "#bar;ch_toggle"
+            }
+        },
+        "power": {
+            "bg":               "level:1_bg",
+            "fg":               "level:1_fg",
+            "click": {
+                "left":         "#bar;ch_toggle",
+                "middle":       "#bar;ch_toggle"
+            }
+        },
+        "power:logout": {
+            "bg":               "level:1_bg",
+            "fg":               "darkorange",
+            "click": {
+                "left":         "logout",
+                "middle":       "#bar;ch_toggle"
+            }
+        },
+        "power:poweroff": {
+            "bg":               "level:1_bg",
+            "fg":               "mediumred",
+            "click": {
+                "left":         "poweroff",
+                "middle":       "#bar;ch_toggle"
+            }
+        },
+        "power:reboot": {
+            "bg":               "level:1_bg",
+            "fg":               "mediumpurple",
+            "click": {
+                "left":         "reboot",
+                "middle":       "#bar;ch_toggle"
+            }
+        },
+        "clicks_off": {
+            "bg":               "level:1_fg",
+            "fg":               "level:1_bg",
+            "click": {
+                "right":        "#bar;toggle_clicks"
+            }
+        },
+        "clicks_on": {
+            "bg":               "level:1_bg",
+            "fg":               "level:1_fg",
+            "click": {
+                "right":        "#bar;toggle_clicks"
+            }
+        }
+    },
+    "mode_translations": {
+        "resize": {
+            "colors": {
+                "level:1_bg":  "level:1_bg_rep",
+                "level:1_fg":  "level:1_fg_rep",
+                "level:2_bg":  "level:2_bg_rep",
+                "level:2_fg":  "level:2_fg_rep",
+                "level:3_bg":  "level:3_bg_rep",
+                "level:3_fg":  "level:3_fg_rep",
+                "level:4_bg":  "level:4_bg_rep",
+                "level:4_fg":  "level:4_fg_rep"
+            }
+        }
+    }
+}
+

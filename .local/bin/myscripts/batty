@@ -1,0 +1,10 @@
+#!/bin/bash
+
+
+listpid=$(getpid "battery.py")
+[[ -n $listpid ]] ; kill $listpid &
+battery.py2 >/dev/null &
+
+
+
+

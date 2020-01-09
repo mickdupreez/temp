@@ -1,0 +1,14 @@
+[database]
+path=/home/michael/.local/share/mail
+[user]
+name=Michael Du Preez
+primary_email=dupreez.michael94@gmail.com
+[new]
+tags=unread;inbox;
+ignore=
+[search]
+exclude_tags=deleted;spam;
+[maildir]
+synchronize_flags=true
+[crypto]
+gpg_path=gpg

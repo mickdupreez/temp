@@ -1,0 +1,7 @@
+#!/bin/bash
+
+sudo mkdir /run/media/TimeShift
+
+
+sudo mount --uuid c03207d9-6573-46ff-bb14-7f96b3bd943c /run/media/TimeShift
+

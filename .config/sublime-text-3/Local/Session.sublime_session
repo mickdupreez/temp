@@ -1,0 +1,269 @@
+{
+	"folder_history":
+	[
+	],
+	"last_version": 3211,
+	"last_window_id": 1,
+	"log_indexing": false,
+	"settings":
+	{
+	},
+	"windows":
+	[
+		{
+			"auto_complete":
+			{
+				"selected_items":
+				[
+				]
+			},
+			"buffers":
+			[
+				{
+					"contents": "",
+					"file": "/home/michael/.local/bin/myscripts/tester1",
+					"file_size": 12,
+					"file_write_time": 132217644928231709,
+					"settings":
+					{
+						"buffer_size": 0,
+						"line_ending": "Unix"
+					}
+				},
+				{
+					"contents": "#!/usr/bin/env python3\nimport math\nimport subprocess\nimport time\nimport os\n\n# ---# Path Variables #---#\n\nFULL = '/sys/class/power_supply/BAT0/charge_full'\nCURRENT = '/sys/class/power_supply/BAT0/charge_now'\nNOW = '/sys/class/power_supply/BAT0/status'\nCMD = 'cat'\n\n# ---# Subprocesses and Variables for output #---#\n\n# Status [Discharging Charging Full]\nGET_STATUS = subprocess.run([CMD, NOW], capture_output=True, text=True)\n# Charge in Mah\nGET_CHARGE = subprocess.run([CMD, CURRENT], capture_output=True, text=True)\n# MAX charge in Mah\nGET_MAX = subprocess.run([CMD, FULL], capture_output=True, text=True)\n# Divided by FULL Multiplied by 100 To get value of 0-100\nEQUATION = int(GET_CHARGE.stdout) / int(GET_MAX.stdout) * 100\nCHARGE = int(EQUATION)\nSTATUS = GET_STATUS.stdout.rstrip()\nPERCENT = '%'\n# Formatting the output to one line with trailing percent sign\nBATT = STATUS, CHARGE, PERCENT\nBATTERY = f\"{CHARGE}{PERCENT}\"\n\n# ---# Colors and Icons #---#\n\nEND = '%{F-}'\nPink = '%{F#FF0099}'\nGreen = '%{F#33FF00}'\nRed = '%{F#ff0000}'\nBlue = '%{F#127FE0}'\nPurple = '%{F#8D008D}'\nBlue2 = '%{F#a1efe4}'\nWhite = '%{F#ffffff}'\nOrange = '%{F#fd971f}'\nBrown = '%{F#78300C}'\nGrey = '%{F#32322D}'\nBlack = '%{F#000000}'\nCream = '%{F#a59f85}'\nYellow = '%{F#ffff00}'\nLight_Pink = '%{F#F21672}'\nLight_Green = '%{F#a6e22e}'\nLight_Orange = '%{F#f4bf75}'\nLight_Blue = '%{F#66d9ef}'\nLight_Purple = '%{F#ae81ff}'\nLight_Blue2 = '%{F#a1efe4}'\nLight_White = '%{F#f8f8f2}'\nLight_Grey = '%{F#75715e}'\nDark_Grey = '%{F#c9272822}'\nDarker_Grey = '%{F#191919}'\nTransparent = '%{F#00000000}'\n\nF = ''\nT = ''\nH = ''\nR = ''\nE = ''\n\nDISCHARGING = [F, T, H, R, E]\nCHARGING = [E, R, H, T, F]\nCHARGED = [F]\n\n\ndef icon_state():\n    if STATUS == 'Discharging':\n        c = Light_Orange\n        e = END\n        b = BATTERY\n        f = open('BATT', 'a+')\n        for x in DISCHARGING:\n            f.writelines(f'{c}{x}{e} {b} \\r\\n')\n            time.sleep(1)\n    if STATUS == 'Charging':\n        c = Light_Orange\n        e = END\n        b = BATTERY\n        f = open('BATT', 'a+')\n        for x in CHARGING:\n            f.writelines(f'{c}{x}{e} {b} \\r\\n')\n            time.sleep(1)\n    if STATUS == 'Full':\n        c = Light_Orange\n        e = END\n        b = BATTERY\n        f = open('BATT:while, 'a+')\n        for x in CHARGED:\n            f.writelines(f'{c}{x}{e} {b} \\r\\n')\n            time.sleep(1)\n\n\noutput = \"polybar-msg hook battery 1\"\ndeloutput = \"sed -i '1d' BATTERY.txt\"\n\n\nB = 1\nwhile B == 1:\n    icon_state()\n",
+					"file": "/home/michael/.local/bin/myscripts/battery.py",
+					"file_size": 2512,
+					"file_write_time": 132220378940742000,
+					"settings":
+					{
+						"buffer_size": 2486,
+						"encoding": "UTF-8",
+						"line_ending": "Unix"
+					}
+				}
+			],
+			"build_system": "",
+			"build_system_choices":
+			[
+			],
+			"build_varint": "",
+			"command_palette":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"console":
+			{
+				"height": 0.0,
+				"history":
+				[
+				]
+			},
+			"distraction_free":
+			{
+				"menu_visible": true,
+				"show_minimap": false,
+				"show_open_files": false,
+				"show_tabs": false,
+				"side_bar_visible": false,
+				"status_bar_visible": false
+			},
+			"file_history":
+			[
+			],
+			"find":
+			{
+				"height": 0.0
+			},
+			"find_in_files":
+			{
+				"height": 0.0,
+				"where_history":
+				[
+				]
+			},
+			"find_state":
+			{
+				"case_sensitive": false,
+				"find_history":
+				[
+				],
+				"highlight": true,
+				"in_selection": false,
+				"preserve_case": false,
+				"regex": false,
+				"replace_history":
+				[
+				],
+				"reverse": false,
+				"show_context": true,
+				"use_buffer2": true,
+				"whole_word": false,
+				"wrap": true
+			},
+			"groups":
+			[
+				{
+					"selected": 1,
+					"sheets":
+					[
+						{
+							"buffer": 0,
+							"file": "/home/michael/.local/bin/myscripts/tester1",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 0,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										0,
+										0
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/Text/Plain text.tmLanguage"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 1,
+							"type": "text"
+						},
+						{
+							"buffer": 1,
+							"file": "/home/michael/.local/bin/myscripts/battery.py",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 2486,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										2261,
+										2261
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/Python/Python.sublime-syntax",
+									"tab_size": 4,
+									"translate_tabs_to_spaces": true
+								},
+								"translation.x": 0.0,
+								"translation.y": 1296.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 0,
+							"type": "text"
+						}
+					]
+				}
+			],
+			"incremental_find":
+			{
+				"height": 0.0
+			},
+			"input":
+			{
+				"height": 0.0
+			},
+			"layout":
+			{
+				"cells":
+				[
+					[
+						0,
+						0,
+						1,
+						1
+					]
+				],
+				"cols":
+				[
+					0.0,
+					1.0
+				],
+				"rows":
+				[
+					0.0,
+					1.0
+				]
+			},
+			"menu_visible": true,
+			"output.find_results":
+			{
+				"height": 0.0
+			},
+			"pinned_build_system": "",
+			"position": "0,0,0,0,0,1287,14,2533,988,3840,1080",
+			"project": "",
+			"replace":
+			{
+				"height": 0.0
+			},
+			"save_all_on_build": true,
+			"select_file":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"select_project":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"select_symbol":
+			{
+				"height": 0.0,
+				"last_filter": "",
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"selected_group": 0,
+			"settings":
+			{
+			},
+			"show_minimap": true,
+			"show_open_files": false,
+			"show_tabs": true,
+			"side_bar_visible": true,
+			"side_bar_width": 195.0,
+			"status_bar_visible": true,
+			"template_settings":
+			{
+			},
+			"window_id": 1,
+			"workspace_name": ""
+		}
+	],
+	"workspaces":
+	{
+		"recent_workspaces":
+		[
+		]
+	}
+}
